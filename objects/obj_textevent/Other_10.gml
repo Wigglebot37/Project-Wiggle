@@ -1,0 +1,1 @@
+active_textbox = create_dialogue(myText, mySpeaker, myEffects, myTextSpeed, myTypes, myNextLine, myScripts, myTextCol);

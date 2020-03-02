@@ -17,8 +17,8 @@ if(room==rm_start_menu) {
 	else if(choice==3 && input_enter) game_end();
 } else if(room==rm_options_menu) {
 	choicemax=2;
-	text0="Delete current ProjectM.sav file";
-	text1="Also does nothing.";
+	text0="Delete current save file";
+	text1="Does nothing.";
 	text2="Back";
 	text3="";
 	if(choice==0 && input_enter) delete_save();

@@ -9,7 +9,7 @@ switch(choice_variable){
 	#region First Dialogue
 		//Line 0
 		var i = 0;
-		myText[i]		= "Welcome to Project M! I will show off textboxes and how cool they can look.";
+		myText[i]		= "Welcome to Project Wiggle! I will show off text and how cool it can look.";
 		myTextCol[i]	= [56,c_orange, 61,c_white];
 		mySpeaker[i]	= id;
 		

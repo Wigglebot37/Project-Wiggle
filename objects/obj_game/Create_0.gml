@@ -45,9 +45,9 @@ runbool=false;
 
 globalvar transinst;
 // Create game font from sprite
-mapstring=" 0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz><.!?,')(&:;/%";
+mapstring=" 0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz.!?,'()&:;/%";
 globalvar FONT_NORM,FONT_OUTLINE,Flavor;
-FONT_NORM=font_add_sprite_ext(spr_fontnormal,mapstring,true,2);
+FONT_NORM=font_add_sprite_ext(spr_fontsmall,mapstring,true,2);
 FONT_OUTLINE=font_add_sprite_ext(spr_fontnormoutline,mapstring,true,2);
 draw_set_font(FONT_NORM);
 

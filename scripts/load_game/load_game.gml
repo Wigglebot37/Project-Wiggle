@@ -2,8 +2,8 @@
 
 with(obj_everett) instance_destroy();
 
-if(file_exists("ProjectM.sav")) {
-	var _wrapper=load_JSON_from_file("ProjectM.sav");
+if(file_exists("ProjectWiggle.sav")) {
+	var _wrapper=load_JSON_from_file("ProjectWiggle.sav");
 	var _list=_wrapper[? "ROOT"];
 	// or var _list=ds_map_find_value(_wrapper,"ROOT");
 
@@ -20,4 +20,4 @@ if(file_exists("ProjectM.sav")) {
 	ds_map_destroy(_wrapper);
 	show_debug_message("Game Loaded.");
 	
-} else show_debug_message("Cannot find ProjectM.sav");
+} else show_debug_message("Cannot find ProjectWiggle.sav");

@@ -1,6 +1,6 @@
 targetRoom=rm_evhouseupper;
-targetX=275;
-targetY=375;
+targetX=288;
+targetY=223;
 
 // pfB=Player Facing Before (being able to enter)
 pfB1=dir_up;

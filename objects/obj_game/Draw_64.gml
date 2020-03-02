@@ -74,7 +74,7 @@ if(main_menu_transition) {
 		if(blackA>=1) room_goto(rm_town);
 	} else {
 		if(blackA>=1) {
-			if(file_exists("ProjectM.sav")) load_game();
+			if(file_exists("ProjectWiggle.sav")) load_game();
 			else save_game();
 		}
 		blackA-=0.05;

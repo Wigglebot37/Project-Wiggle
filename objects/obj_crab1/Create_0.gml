@@ -1,13 +1,8 @@
-///@description	Textbox Create Events
+///@description	Textbox Variables
 
-// Runs all of the parent Event as well
-event_inherited();
+event_inherited(); //so it will inherit from obj_par_text
 
-name="Crab 1";
-pitch=1.2;
-text=[
-	"Crab 3 was delicious",
-	"Oh..."
-];
-speakers=[id,obj_everett];
-next_line=[0,0];
+//-------DIALOGUE STUFF
+myPortrait			= spr_crabdance;
+myPitch				= 1;
+myName				= "Crab 1";

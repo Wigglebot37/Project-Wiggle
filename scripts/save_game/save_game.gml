@@ -19,7 +19,7 @@ ds_map_add_list(_wrapper,"ROOT",_root_list);
 
 // save everything into a string
 var _string=json_encode(_wrapper);
-save_string_to_file("ProjectM.sav",_string);
+save_string_to_file("ProjectWiggle.sav",_string);
 
 // destroys all data
 ds_map_destroy(_wrapper);

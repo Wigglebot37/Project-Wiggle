@@ -1,5 +1,9 @@
 boxstart=game_height-(boxheight*scalary);
 namestart=boxstart-40*scalary;
+if(!window_get_fullscreen()) textwidthlmt=576-16;
+// Edit the 12 for further changes
+else textwidthlmt=(576+12*scalarx)*2.23;
+//if(keyboard_check_pressed(vk_backspace)) show_debug_message(textwidthlmt);
 
 //textwidthlmt=game_width-(26*scalarx);
 
@@ -37,11 +41,11 @@ var text_array_len=array_length_1d(text[page]);
 if(type[page] == 0){
 	// get rid of "&& charCount==str_len" if adding in commented out areas
 	//If we haven't "typed out" all the letters, immediately "type out" all letters (works as a "skip")
-	if(input_interact && charCount<str_len && !stop_dialogue){
+	if(input_interact && charCount<str_len && !stop_dialogue) {
 		charCount=string_length(text_NE);
 	} else if(input_interact && charCount>=str_len && !stop_dialogue) {		
 		//Only increase page IF page + 1,is less than the total number of entries
-		if(page < array_length_1d(text)-1){
+		if(page < array_length_1d(text)-1) {
 			event_perform(ev_other, ev_user0);
 			audio_play_sound(snd_select1,50,false);
 			var line=nextline[page];

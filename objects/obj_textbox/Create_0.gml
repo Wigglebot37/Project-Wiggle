@@ -77,7 +77,5 @@ freq		= 2;
 subchanger=0;
 sub=0;
 fntsize=28;
-if(!window_get_fullscreen()) textwidthlmt=576-16;
-// Edit the 12 for further changes
-else textwidthlmt=(576+12*scalarx)*2.23;
+textwidthlmt=game_width-16*scalarx;
 xval=46;

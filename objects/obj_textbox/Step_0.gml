@@ -1,11 +1,6 @@
 boxstart=game_height-(boxheight*scalary);
 namestart=boxstart-40*scalary;
-if(!window_get_fullscreen()) textwidthlmt=576-16;
-// Edit the 12 for further changes
-else textwidthlmt=(576+12*scalarx)*2.23;
-//if(keyboard_check_pressed(vk_backspace)) show_debug_message(textwidthlmt);
-
-//textwidthlmt=game_width-(26*scalarx);
+textwidthlmt=game_width-16*scalarx;
 
 if(stop_dialogue) {
 	if(yy<game_height) yy+=6*scalary;

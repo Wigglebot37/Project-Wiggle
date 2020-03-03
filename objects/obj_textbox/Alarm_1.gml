@@ -37,7 +37,7 @@ if(type[page] == 0){
 		char = string_char_at(text_NE, cc);
 		switch(char) {
 			// 6-wide
-			case "&": cx+=charSize+4*scx; break;
+			case "&": cx+=charSize*scx+4*scx; break;
 			#region // 4-wide
 			case "J":
 			case "L":
@@ -68,25 +68,35 @@ if(type[page] == 0){
 			case "I":
 			case "i":
 			case "j":
-			case "l": cx+=charSize-2*scx; break;
+			case "l": cx+=charSize*scx-2*scx; break;
 			// 2-wide
 			case ",":
 			case "'":
-			case ";": cx+=charSize-4*scx; break;
+			case ";": cx+=charSize*scx-4*scx; break;
 			// 1-wide
 			case ":":
 			case ".":
-			case "!": cx+=charSize-6*scx; break;
+			case "!": cx+=charSize*scx-6*scx; break;
 			// 5-wide
-			default: cx+=charSize+2*scx;
+			default: cx+=charSize*scx+2*scx;
 		}
 		
 		//Get next space, deal with new lines
-		if(cc >= next_space) {
+		if(cc > next_space || cc==str_len) {
 			next_space = cc;
 			while(next_space < str_len && string_copy(text_NE, next_space,1) != " ") next_space++;
 			var linewidth=(next_space-breakpoint)+cx;
-			if(linewidth>=txtwidth && string_char_at(text_NE,cc-1)==" ") { breakpoint=cc; breakpoints[by]=cc; by++; cx=0; }
+			if(string_char_at(text_NE,cc-1)==" ") { 
+				if(linewidth<txtwidth) {
+					breakpoint=cc; breakpoints[by]=cc; 
+				} else { by++; cx=0; }
+			}
+		}
+		
+		if(cc==str_len) { 
+			if(linewidth<txtwidth) {
+				breakpoint=cc+1; breakpoints[by]=cc+1;
+			}
 		}
 		cc++;
 	}

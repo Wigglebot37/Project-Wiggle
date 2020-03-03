@@ -91,7 +91,7 @@ if(yy==boxstart) {
 				
 				//Get next space, deal with new lines
 				if(bp_len != -1 && cc == next_space) {
-					cy += 1; cx=-charSize+12;
+					cy += 1; cx=-charSize*scx+12*scx;
 					if(by < bp_len) {
 						next_space = breakpoints[by];
 						by++;
@@ -101,23 +101,23 @@ if(yy==boxstart) {
 				
 				switch(effect) {
 					case 0:	//normal
-						draw_text_transformed_color(x2+(cx*scx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2+(cx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,col,col,col,col,1);
 					break;
 			
 					case 1:	//shakey
-						draw_text_transformed_color(x2+(cx*scx)+random_range(-1,1),y2+(cy*stringHeight*scy)+random_range(-1,1),char,2*scx,2*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2+(cx)+random_range(-1,1),y2+(cy*stringHeight*scy)+random_range(-1,1),char,2*scx,2*scy,0,col,col,col,col,1);
 					break;
 			
 					case 2:	//wave
 						var so = t;
 						var shift = sin(so*pi*freq/room_speed)*amplitude;
-						draw_text_transformed_color(x2 + (cx*scx),y2+(cy*stringHeight*scy)+shift,char,2*scx,2*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy)+shift,char,2*scx,2*scy,0,col,col,col,col,1);
 					break; 
 			
 					case 3: //colour shift
 						var c1 = make_colour_hsv(t+cc,255,255);
 						var c2 = make_colour_hsv(t+cc+34,255,255);
-						draw_text_transformed_color(x2 + (cx*scx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,c1,c1,c2,c2,1);
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,c1,c1,c2,c2,1);
 					break;
 		
 					case 4: //wave AND colour shift
@@ -125,7 +125,7 @@ if(yy==boxstart) {
 						var shift = sin(so*pi*freq/room_speed)*amplitude;
 						var c1 = make_colour_hsv(t+cc,255,255);
 						var c2 = make_colour_hsv(t+cc+45,255,255);
-						draw_text_transformed_color(x2 + (cx*scx),y2+(cy*stringHeight*scy)+shift,char,2*scx,2*scy,0,c1,c1,c2,c2,1);
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy)+shift,char,2*scx,2*scy,0,c1,c1,c2,c2,1);
 					break; 
 		
 					case 5: //spin
@@ -133,7 +133,7 @@ if(yy==boxstart) {
 						var shift = sin(so*pi*freq/room_speed);
 						var mv = charSize/2;
 						draw_set_valign(fa_middle); draw_set_halign(fa_middle);
-						draw_text_transformed_color(x2 + (cx*scx)+mv+3*scx,y2+(cy*stringHeight*scy)+(stringHeight/2*scy)-4*scy,char,2*scx,2*scy,shift*20,col,col,col,col,1);
+						draw_text_transformed_color(x2 + (cx)+mv+3*scx,y2+(cy*stringHeight*scy)+(stringHeight/2*scy)-4*scy,char,2*scx,2*scy,shift*20,col,col,col,col,1);
 						draw_set_valign(fa_top); draw_set_halign(fa_left);
 					break;
 				
@@ -142,14 +142,14 @@ if(yy==boxstart) {
 						var shift = abs(sin(so*pi*freq/room_speed));
 						var mv = charSize/2;
 						draw_set_valign(fa_middle); draw_set_halign(fa_middle);
-						draw_text_transformed_color(x2 + (cx*scx)+mv,y2+(cy*stringHeight*scy)+(stringHeight/2*scy)-4*scy,char,2*shift*scx,2*shift*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2 + (cx)+mv,y2+(cy*stringHeight*scy)+(stringHeight/2*scy)-4*scy,char,2*shift*scx,2*shift*scy,0,col,col,col,col,1);
 						draw_set_valign(fa_top); draw_set_halign(fa_left);
 					break;
 				
 					case 7:	//flicker
 						var so = t + cc;
 						var shift = sin(so*pi*freq/room_speed);
-						draw_text_transformed_color(x2 + (cx*scx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,col,col,col,col,shift+random_range(-1,1));
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,col,col,col,col,shift+random_range(-1,1));
 					break; 
 				}
 		
@@ -157,7 +157,7 @@ if(yy==boxstart) {
 				cc += 1;
 				switch(char) {
 					// 6-wide
-					case "&": cx+=charSize+4; break;
+					case "&": cx+=charSize*scx+4*scx; break;
 					#region // 4-wide
 					case "J":
 					case "L":
@@ -182,23 +182,23 @@ if(yy==boxstart) {
 					case "z":
 					case " ":
 					case "(":
-					case ")": cx+=charSize; break;
+					case ")": cx+=charSize*scx; break;
 					#endregion
 					// 3-wide
 					case "I":
 					case "i":
 					case "j":
-					case "l": cx+=charSize-2; break;
+					case "l": cx+=charSize*scx-2*scx; break;
 					// 2-wide
 					case ",":
 					case "'":
-					case ";": cx+=charSize-4; break;
+					case ";": cx+=charSize*scx-4*scx; break;
 					// 1-wide
 					case ":":
 					case ".":
-					case "!": cx+=charSize-6; break;
+					case "!": cx+=charSize*scx-6*scx; break;
 					// 5-wide
-					default: cx+=charSize+2;
+					default: cx+=charSize*scx+2*scx;
 				}
 			}
 			#endregion

@@ -1,3 +1,3 @@
 event_inherited();
 
-walltext="A cute little lamp.";
+walltext="The lamp is a nice touch.";

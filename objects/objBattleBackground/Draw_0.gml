@@ -5,35 +5,35 @@ if alpha > 0 { //Don't even bother drawing this shit if the background is invisi
     surface_reset_target();
 	
 
-    var phase,step,fstep,istep,offx;
+    var phase,step,fstep,istep,offx,gheight=320,gwidth=576;
     fstep = (scanline == 2)
     istep = 1 + (scanline > 0)
     if surface_exists(surf) { //Always make sure the surface is around
-        for (var step=fstep; step<game_width; step+=istep) {
-            phase = sin(frequency*(step+phaseoffset)/game_height);
+        for (var step=fstep; step<gwidth; step+=istep) {
+            phase = sin(frequency*(step+phaseoffset)/gheight);
             if(effect==0) {
                 //Sine
-                offx = (((offsetx mod game_width)+game_width) mod game_width);
+                offx = (((offsetx mod gwidth)+gwidth) mod gwidth);
                 sourcex = offx+sin(phase)*amplitude;
                 sourcey=step+offsety;
-                draw_surface_part_ext(surf,sourcex,sourcey,game_width,1,0,step,1,1,c_white,alpha);
+                draw_surface_part_ext(surf,sourcex,sourcey,gwidth,1,0,step,1,1,c_white,alpha);
             } else if(effect==1) {
                 //Vert. Comp
                 sourcex=0;
                 sourcey=offsety+step+sin(phase)*amplitude;
-                draw_surface_part_ext(surf,sourcex,sourcey,game_width,1,0,step,1,1,c_white,alpha);
+                draw_surface_part_ext(surf,sourcex,sourcey,gwidth,1,0,step,1,1,c_white,alpha);
             } else if(effect==2) {
                 //Horz. Comp (incomplete, weird effect)
-                part=game_width-sourcex-8;
+                part=gwidth-sourcex-8;
                 sourcex=step+sin(phase)*amplitude+100;
                 sourcey=0
-                draw_surface_part_ext(surf,sourcex,sourcey,game_width,1,0,step,1,1,c_white,alpha);
+                draw_surface_part_ext(surf,sourcex,sourcey,gwidth,1,0,step,1,1,c_white,alpha);
             } else if(effect==3) {
                 //Sine + Vert. Comp (needs extra width)
-                offx=(((offsetx mod game_width)+game_width) mod game_width);
+                offx=(((offsetx mod gwidth)+gwidth) mod gwidth);
                 sourcex=offx+sin(phase)*amplitude;
                 sourcey=offsety+step+sin(phase)*amplitude;
-                part=game_width-sourcex;
+                part=gwidth-sourcex;
                 draw_surface_part_ext(surf,sourcex,sourcey,part,1,0,step,1,1,c_white,alpha);
             }
         }

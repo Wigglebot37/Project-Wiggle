@@ -11,7 +11,7 @@ if(transitionbool) {
 		if(enemy==noone) {
 			blackA+=0.05;
 			if(blackA>=1) {
-				if(room!=rm_battlescreen && object_exists(ev)) {
+				if(room!=rm_battlescreen && instance_exists(ev)) {
 					if(ev.running) runbool=true;
 					else runbool=false;
 					audio_play_sound(transition_sound,50,false);

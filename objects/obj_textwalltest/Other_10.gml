@@ -7,3 +7,12 @@ reset_dialogue_defaults();
 var i = 0;
 myText[i]		= walltext;
 mySpeaker[i]	= id;
+
+if(walltext!="") {
+	i++;
+	myText[i]		= walltext2;
+	myTypes[i]		= 1;
+	mySpeaker[i]	= id;
+	myScripts[i]	= scripts2;
+	myNextLine[i]	= nextline2;
+}

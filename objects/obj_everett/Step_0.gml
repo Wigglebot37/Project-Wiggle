@@ -142,60 +142,62 @@ if(!instance_exists(obj_cutscene)) {
 	}
 }
 #endregion
-#region //Attempting diagonal movement along straight walls
-if(dir==dir_upright) {
-	if(place_meeting(x+spd,y,obj_wall) && !place_meeting(x,y-spd,obj_wall)
-		&& !place_meeting(x+spd,y,obj_walldiag)) {
-		dir=dir_up; if(running) { running=false; ready=false; ready2=0; }
-	} else if(!place_meeting(x+spd,y,obj_wall) && place_meeting(x,y-spd,obj_wall)
-		&& !place_meeting(x,y-spd,obj_walldiag3)) {
-		dir=dir_right; if(running) { running=false; ready=false; ready2=0; }
+if(!instance_exists(obj_cutscene)) {
+	#region //Attempting diagonal movement along straight walls
+	if(dir==dir_upright) {
+		if(place_meeting(x+spd,y,obj_wall) && !place_meeting(x,y-spd,obj_wall)
+			&& !place_meeting(x+spd,y,obj_walldiag)) {
+			dir=dir_up; if(running) { running=false; ready=false; ready2=0; }
+		} else if(!place_meeting(x+spd,y,obj_wall) && place_meeting(x,y-spd,obj_wall)
+			&& !place_meeting(x,y-spd,obj_walldiag3)) {
+			dir=dir_right; if(running) { running=false; ready=false; ready2=0; }
+		}
+	} else if(dir==dir_upleft) {
+		if(place_meeting(x-spd,y,obj_wall) && !place_meeting(x,y-spd,obj_wall)
+			&& !place_meeting(x-spd,y,obj_walldiag4)) {
+			dir=dir_up; if(running) { running=false; ready=false; ready2=0; }
+		} else if(!place_meeting(x-spd,y,obj_wall) && place_meeting(x,y-spd,obj_wall)
+			&& !place_meeting(x,y-spd,obj_walldiag2)) {
+			dir=dir_left; if(running) { running=false; ready=false; ready2=0; }
+		}
+	} else if(dir==dir_downright) {
+		if(place_meeting(x+spd,y,obj_wall) && !place_meeting(x, y+spd, obj_wall)
+			&& !place_meeting(x+spd,y,obj_walldiag2)) {
+			dir=dir_down; if(running) { running=false; ready=false; ready2=0; }
+		} else if(!place_meeting(x+spd,y,obj_wall) && place_meeting(x,y+spd,obj_wall)
+			&& !place_meeting(x,y+spd,obj_walldiag4)) {
+			dir=dir_right; if(running) { running=false; ready=false; ready2=0; }
+		}
+	} else if(dir==dir_downleft) {
+		if(place_meeting(x-spd,y,obj_wall) && !place_meeting(x,y+spd,obj_wall)
+			&& !place_meeting(x-spd,y,obj_walldiag3)) {
+			dir=dir_down; if(running) { running=false; ready=false; ready2=0; }
+		} else if(!place_meeting(x-spd,y,obj_wall) && place_meeting(x,y+spd,obj_wall)
+			&& !place_meeting(x,y+spd,obj_walldiag)) {
+			dir=dir_left; if(running) { running=false; ready=false; ready2=0; }
+		}
 	}
-} else if(dir==dir_upleft) {
-	if(place_meeting(x-spd,y,obj_wall) && !place_meeting(x,y-spd,obj_wall)
-		&& !place_meeting(x-spd,y,obj_walldiag4)) {
-		dir=dir_up; if(running) { running=false; ready=false; ready2=0; }
-	} else if(!place_meeting(x-spd,y,obj_wall) && place_meeting(x,y-spd,obj_wall)
-		&& !place_meeting(x,y-spd,obj_walldiag2)) {
-		dir=dir_left; if(running) { running=false; ready=false; ready2=0; }
-	}
-} else if(dir==dir_downright) {
-	if(place_meeting(x+spd,y,obj_wall) && !place_meeting(x, y+spd, obj_wall)
-		&& !place_meeting(x+spd,y,obj_walldiag2)) {
-		dir=dir_down; if(running) { running=false; ready=false; ready2=0; }
-	} else if(!place_meeting(x+spd,y,obj_wall) && place_meeting(x,y+spd,obj_wall)
-		&& !place_meeting(x,y+spd,obj_walldiag4)) {
-		dir=dir_right; if(running) { running=false; ready=false; ready2=0; }
-	}
-} else if(dir==dir_downleft) {
-	if(place_meeting(x-spd,y,obj_wall) && !place_meeting(x,y+spd,obj_wall)
-		&& !place_meeting(x-spd,y,obj_walldiag3)) {
-		dir=dir_down; if(running) { running=false; ready=false; ready2=0; }
-	} else if(!place_meeting(x-spd,y,obj_wall) && place_meeting(x,y+spd,obj_wall)
-		&& !place_meeting(x,y+spd,obj_walldiag)) {
-		dir=dir_left; if(running) { running=false; ready=false; ready2=0; }
-	}
+	#endregion
+	#region //Makes it so walking sprite does not animate during collision
+	if((place_meeting(x, y-spd, obj_wall) && dir==dir_up)
+	|| (place_meeting(x, y+spd, obj_wall) && dir==dir_down)
+	|| (place_meeting(x+spd, y, obj_wall) && dir==dir_right)
+	|| (place_meeting(x-spd, y, obj_wall) && dir==dir_left)
+	|| (place_meeting(x+spd, y, obj_wall) && place_meeting(x, y-spd, obj_wall) && dir==dir_upright)
+	|| (place_meeting(x-spd, y, obj_wall) && place_meeting(x, y-spd, obj_wall) && dir==dir_upleft)
+	|| (place_meeting(x+spd, y, obj_wall) && place_meeting(x, y+spd, obj_wall) && dir==dir_downright)
+	|| (place_meeting(x-spd, y, obj_wall) && place_meeting(x, y+spd, obj_wall) && dir==dir_downleft)
+	|| (place_meeting(x+spd,y+spd,obj_walldiag) && dir==dir_downright)
+	|| (place_meeting(x+spd,y-spd,obj_walldiag2) && dir==dir_upright)
+	|| (place_meeting(x-spd,y-spd,obj_walldiag3) && dir==dir_upleft)
+	|| (place_meeting(x-spd,y+spd,obj_walldiag4) && dir==dir_downleft)) {
+		image_index=1;
+		spd=0;
+		running=false;
+		ready=false;
+		ready2=0;
+	} #endregion
 }
-#endregion
-#region //Makes it so walking sprite does not animate during collision
-if((place_meeting(x, y-spd, obj_wall) && dir==dir_up)
-|| (place_meeting(x, y+spd, obj_wall) && dir==dir_down)
-|| (place_meeting(x+spd, y, obj_wall) && dir==dir_right)
-|| (place_meeting(x-spd, y, obj_wall) && dir==dir_left)
-|| (place_meeting(x+spd, y, obj_wall) && place_meeting(x, y-spd, obj_wall) && dir==dir_upright)
-|| (place_meeting(x-spd, y, obj_wall) && place_meeting(x, y-spd, obj_wall) && dir==dir_upleft)
-|| (place_meeting(x+spd, y, obj_wall) && place_meeting(x, y+spd, obj_wall) && dir==dir_downright)
-|| (place_meeting(x-spd, y, obj_wall) && place_meeting(x, y+spd, obj_wall) && dir==dir_downleft)
-|| (place_meeting(x+spd,y+spd,obj_walldiag) && dir==dir_downright)
-|| (place_meeting(x+spd,y-spd,obj_walldiag2) && dir==dir_upright)
-|| (place_meeting(x-spd,y-spd,obj_walldiag3) && dir==dir_upleft)
-|| (place_meeting(x-spd,y+spd,obj_walldiag4) && dir==dir_downleft)) {
-	image_index=1;
-	spd=0;
-	running=false;
-	ready=false;
-	ready2=0;
-} #endregion
 #region //Sprite Changes
 if(running) sprite_index=spr_trplayer;
 else if(!ready && ready2<1 && idleadd==0) {

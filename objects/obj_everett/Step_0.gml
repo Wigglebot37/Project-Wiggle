@@ -3,10 +3,23 @@ if(keyboard_check_pressed(vk_space)) flash=1;
 //var beachdist=distance_to_object(instance_nearest(x,y,obj_wall_beach));
 //if(beachdist<maxdist) audio_sound_gain(snd_beach,(maxdist-beachdist)/maxdist,0);
 
+
+
 if(obj_pause_menu.end_pause || obj_game.end_tran) { image_speed=img_spd; obj_pause_menu.end_pause=false; obj_game.end_tran=false;
 	if(!running && ready2==1) {running=true; ready=false; ready2=0;} else {ready=false; ready2=0;} }
 
 if(!pause && !obj_game.transitionbool && active_textbox==noone) {
+	if(keyboard_check_pressed(vk_lshift) && z==0) zswitch=true;
+	
+	if(zswitch) {
+		z+=zspeed;
+	} if(z!=0) {
+		z-=zgrav; zgrav+=0.1;
+	} if(z<=1) {
+		z=0;
+		zgrav=0;
+		zswitch=false;
+	}
 	// Getting ready to run
 	if(!running && input_ready) ready=true;
 	if(ready && ready2<1) ready2+=0.04;

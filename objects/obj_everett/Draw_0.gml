@@ -1,6 +1,6 @@
 /// @description Shadow Drawing
 draw_sprite(spr_shadow,0,x,y);
-draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_white,ev_alpha);
+draw_sprite_ext(sprite_index,image_index,x,y-z,1,1,0,c_white,ev_alpha);
 
 if(flash>0) {
 	flash-=0.05;

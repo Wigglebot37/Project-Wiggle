@@ -1,5 +1,5 @@
 /// @description Text Box Trigger/Interactions
-if(input_interact && active_textbox==noone && !pause) {
+if(input_interact && active_textbox==noone && !pause && !zswitch) {
 	switch(dir) {
 		case dir_up: x1=x-4; y1=y-5; x2=x+4; y2=y-5; diagfacing=false; break;
 		case dir_down: x1=x-4; y1=y+2; x2=x+4; y2=y+2; diagfacing=false; break;

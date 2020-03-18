@@ -43,4 +43,8 @@ maxdist=300;
 tran=obj_transition;
 active_textbox=noone;
 
+zswitch=false;
+zspeed=2;
+zgrav=0;
+z=0;
 depth=-y;

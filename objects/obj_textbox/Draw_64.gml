@@ -1,5 +1,5 @@
 // Creates textbox and namebox
-var gwidth=game_width,gheight=game_height, scx=scalarx,scy=scalary;
+var gwidth=game_width,gheight=game_height, sc=scalar;
 var c=c_black;
 
 if(!instance_exists(obj_cutscene)) draw_rectangle_color(0,0,gwidth,yy2,c,c,c,c,false);
@@ -7,7 +7,7 @@ if(!instance_exists(obj_cutscene)) draw_rectangle_color(0,0,gwidth,yy2,c,c,c,c,f
 if(yy!=boxstart) draw_rectangle_color(0,yy,gwidth,gheight,c,c,c,c,false);
 else {
 	//Draw portrait
-	if(portrait[page]!=-1) draw_sprite_ext(portrait[page],1,(gwidth/4)+22*scx,yp,2*scx,2*scy,0,c_white,1);	
+	if(portrait[page]!=-1) draw_sprite_ext(portrait[page],1,(gwidth/4)+22*sc,yp,2*sc,2*sc,0,c_white,1);	
 	create_nineslice(spr_textboxlg,Flavor,0,yy,gwidth,gheight);
 }
 
@@ -20,13 +20,13 @@ var tp=text[page],text_array_len=array_length_1d(tp);
 if(yy==boxstart) {
 	#region //Draw namebox and name
 	if(name[page]!="Noone") {
-		create_nineslice(spr_boxlg,Flavor,4*scx,namestart+(2*scy),(gwidth/4)+4*scx,boxstart+(8*scy));
+		create_nineslice(spr_boxlg,Flavor,4*sc,namestart+(2*sc),(gwidth/4)+4*sc,boxstart+(8*sc));
 		
 		// Draw character name that is talking
 		var namey=4;
 		draw_set_halign(fa_center);
 		c=name_col;
-		draw_text_ext_transformed_color(5*scx+((gwidth/4)/2),namestart+(14+namey)*scy,name[page],fntsize,(gwidth/4)-10,2*scx,2*scy,0,c,c,c,c,1);
+		draw_text_ext_transformed_color(5*sc+((gwidth/4)/2),namestart+(14+namey)*sc,name[page],fntsize,(gwidth/4)-10,2*sc,2*sc,0,c,c,c,c,1);
 		draw_set_halign(fa_left);
 	}
 	#endregion
@@ -60,7 +60,7 @@ if(yy==boxstart) {
 			#region // Draw the lines of text being delivered
 			
 			#region // Setup for Effects
-			var col = default_col, cc = 1, y2 = boxstart+18*scy, x2 = 14*scx, cx = 0, cy = 0;
+			var col = default_col, cc = 1, y2 = boxstart+18*sc, x2 = 14*sc, cx = 0, cy = 0;
 			var by = 0, bp_len = -1, effect = 0, next_space,effects_c = 0, text_col_c = 0, bp_array = breakpoints; 
 	
 			//Check if there are breakpoints in this string, if there are save their lengths
@@ -91,33 +91,33 @@ if(yy==boxstart) {
 				
 				//Get next space, deal with new lines
 				if(bp_len != -1 && cc == next_space) {
-					cy += 1; cx=-charSize*scx+12*scx;
+					cy += 1; cx=-charSize*sc+12*sc;
 					if(by < bp_len) {
 						next_space = breakpoints[by];
 						by++;
 					}
 				}
-				//draw_text_ext_transformed(14*scx,boxstart+14*scy,textPart,fntsize,textwidthlmt,scx,scy,0);
+				//draw_text_ext_transformed(14*sc,boxstart+14*sc,textPart,fntsize,textwidthlmt,sc,sc,0);
 				
 				switch(effect) {
 					case 0:	//normal
-						draw_text_transformed_color(x2+(cx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2+(cx),y2+(cy*stringHeight*sc),char,2*sc,2*sc,0,col,col,col,col,1);
 					break;
 			
 					case 1:	//shakey
-						draw_text_transformed_color(x2+(cx)+random_range(-1,1),y2+(cy*stringHeight*scy)+random_range(-1,1),char,2*scx,2*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2+(cx)+random_range(-1,1),y2+(cy*stringHeight*sc)+random_range(-1,1),char,2*sc,2*sc,0,col,col,col,col,1);
 					break;
 			
 					case 2:	//wave
 						var so = t;
 						var shift = sin(so*pi*freq/room_speed)*amplitude;
-						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy)+shift,char,2*scx,2*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*sc)+shift,char,2*sc,2*sc,0,col,col,col,col,1);
 					break; 
 			
 					case 3: //colour shift
 						var c1 = make_colour_hsv(t+cc,255,255);
 						var c2 = make_colour_hsv(t+cc+34,255,255);
-						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,c1,c1,c2,c2,1);
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*sc),char,2*sc,2*sc,0,c1,c1,c2,c2,1);
 					break;
 		
 					case 4: //wave AND colour shift
@@ -125,7 +125,7 @@ if(yy==boxstart) {
 						var shift = sin(so*pi*freq/room_speed)*amplitude;
 						var c1 = make_colour_hsv(t+cc,255,255);
 						var c2 = make_colour_hsv(t+cc+45,255,255);
-						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy)+shift,char,2*scx,2*scy,0,c1,c1,c2,c2,1);
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*sc)+shift,char,2*sc,2*sc,0,c1,c1,c2,c2,1);
 					break; 
 		
 					case 5: //spin
@@ -133,7 +133,7 @@ if(yy==boxstart) {
 						var shift = sin(so*pi*freq/room_speed);
 						var mv = charSize/2;
 						draw_set_valign(fa_middle); draw_set_halign(fa_middle);
-						draw_text_transformed_color(x2 + (cx)+mv+3*scx,y2+(cy*stringHeight*scy)+(stringHeight/2*scy)-4*scy,char,2*scx,2*scy,shift*20,col,col,col,col,1);
+						draw_text_transformed_color(x2 + (cx)+mv+3*sc,y2+(cy*stringHeight*sc)+(stringHeight/2*sc)-4*sc,char,2*sc,2*sc,shift*20,col,col,col,col,1);
 						draw_set_valign(fa_top); draw_set_halign(fa_left);
 					break;
 				
@@ -142,14 +142,14 @@ if(yy==boxstart) {
 						var shift = abs(sin(so*pi*freq/room_speed));
 						var mv = charSize/2;
 						draw_set_valign(fa_middle); draw_set_halign(fa_middle);
-						draw_text_transformed_color(x2 + (cx)+mv,y2+(cy*stringHeight*scy)+(stringHeight/2*scy)-4*scy,char,2*shift*scx,2*shift*scy,0,col,col,col,col,1);
+						draw_text_transformed_color(x2 + (cx)+mv,y2+(cy*stringHeight*sc)+(stringHeight/2*sc)-4*sc,char,2*shift*sc,2*shift*sc,0,col,col,col,col,1);
 						draw_set_valign(fa_top); draw_set_halign(fa_left);
 					break;
 				
 					case 7:	//flicker
 						var so = t + cc;
 						var shift = sin(so*pi*freq/room_speed);
-						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*scy),char,2*scx,2*scy,0,col,col,col,col,shift+random_range(-1,1));
+						draw_text_transformed_color(x2 + (cx),y2+(cy*stringHeight*sc),char,2*sc,2*sc,0,col,col,col,col,shift+random_range(-1,1));
 					break; 
 				}
 		
@@ -157,7 +157,7 @@ if(yy==boxstart) {
 				cc += 1;
 				switch(char) {
 					// 6-wide
-					case "&": cx+=charSize*scx+4*scx; break;
+					case "&": cx+=charSize*sc+4*sc; break;
 					#region // 4-wide
 					case "J":
 					case "L":
@@ -182,23 +182,23 @@ if(yy==boxstart) {
 					case "z":
 					case " ":
 					case "(":
-					case ")": cx+=charSize*scx; break;
+					case ")": cx+=charSize*sc; break;
 					#endregion
 					// 3-wide
 					case "I":
 					case "i":
 					case "j":
-					case "l": cx+=charSize*scx-2*scx; break;
+					case "l": cx+=charSize*sc-2*sc; break;
 					// 2-wide
 					case ",":
 					case "'":
-					case ";": cx+=charSize*scx-4*scx; break;
+					case ";": cx+=charSize*sc-4*sc; break;
 					// 1-wide
 					case ":":
 					case ".":
-					case "!": cx+=charSize*scx-6*scx; break;
+					case "!": cx+=charSize*sc-6*sc; break;
 					// 5-wide
-					default: cx+=charSize*scx+2*scx;
+					default: cx+=charSize*sc+2*sc;
 				}
 			}
 			#endregion
@@ -234,12 +234,12 @@ if(yy==boxstart) {
 				if(i<=1) xval=38;
 				else if(i==2 || i==3) xval=24+(576/3);
 				else xval=48+(576*2/3);
-				draw_sprite_ext(spr_textchoice,sub,(xval-18)*scx,(boxstart+26*scy)+y_add*scy,2*scx,2*scy,0,c_white,1);
+				draw_sprite_ext(spr_textchoice,sub,(xval-18)*sc,(boxstart+26*sc)+y_add*sc,2*sc,2*sc,0,c_white,1);
 			} else if(i<=1) xval=14;
 			else if(i==2 || i==3) xval=(576/3);
 			else xval=24+(576*2/3);
 			var ctext=tp[i];
-			draw_text_ext_transformed_color(xval*scx,(boxstart+18*scy)+y_add*scy,ctext,fntsize,textwidthlmt,2*scx,2*scy,0,c,c,c,c,1);
+			draw_text_ext_transformed_color(xval*sc,(boxstart+18*sc)+y_add*sc,ctext,fntsize,textwidthlmt,2*sc,2*sc,0,c,c,c,c,1);
 			if(y_add<fntsize*1) y_add+=fntsize;
 			else y_add=0;
 			i++;
@@ -249,8 +249,8 @@ if(yy==boxstart) {
 	#region //Text end Sprite
 	// Adds textend sprite showing that the player can continue to the next body of text
 	if(charCount>=str_len && type[page]=0) {
-		draw_sprite_ext(spr_textcont,sub,gwidth-29*scx,gheight-25*scy,2*scx,2*scy,0,c_white,1);
-		//draw_sprite_ext(spr_textend,sub,gwidth-25*scx,gheight-25*scy,2*scx,2*scy,0,c_white,1);
+		draw_sprite_ext(spr_textcont,sub,gwidth-29*sc,gheight-25*sc,2*sc,2*sc,0,c_white,1);
+		//draw_sprite_ext(spr_textend,sub,gwidth-25*sc,gheight-25*sc,2*sc,2*sc,0,c_white,1);
 	}
 	#endregion
 }

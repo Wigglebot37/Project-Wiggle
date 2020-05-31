@@ -1,5 +1,5 @@
 talk=1;
-yy=game_height-6*scalary;
+yy=game_height-6*scalar;
 yy2=0;
 yp=game_height;
 stop_dialogue=false;
@@ -20,8 +20,8 @@ input_left=keyboard_check_pressed(ord("A"));
 
 cam=obj_camera;
 boxheight=78; //78 for 2 lines, 106 for 3 lines
-boxstart=game_height-(boxheight*scalary);
-namestart=boxstart-(40*scalary);
+boxstart=game_height-(boxheight*scalar);
+namestart=boxstart-(40*scalar);
 // Where the box will spawn in at in the y position (x is just 0)
 
 if(instance_number(obj_textevent)>1 or instance_number(obj_textbox)>1){ instance_destroy(); exit; }
@@ -77,5 +77,5 @@ freq		= 2;
 subchanger=0;
 sub=0;
 fntsize=28;
-textwidthlmt=game_width-16*scalarx;
+textwidthlmt=game_width-16*scalar;
 xval=46;

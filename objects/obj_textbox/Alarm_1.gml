@@ -1,7 +1,7 @@
 ///@description Setup
 //Must be done AFTER the handover occurs, so frame after created, and after every text page change
 
-var scx=scalarx;
+var scx=scalar;
 #region Reset variables
 charCount		= 0;
 text_speed_c	= 0;

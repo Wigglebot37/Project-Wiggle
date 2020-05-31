@@ -20,10 +20,12 @@ if(follow!=noone) {
 	yTo=floor(follow.y-16);
 }
 
-display_set_gui_size(window_get_width(), window_get_height());
+var zoomspeed=0.2;
+view_zoom+=keyboard_check_pressed(ord("W"))*zoomspeed;
+view_zoom-=keyboard_check_pressed(ord("S"))*zoomspeed;
+view_zoom=clamp(view_zoom,1,view_max_zoom);
 
-scalarx=window_get_width()/guiwidth;
-scalary=window_get_height()/guiheight;
+camera_set_view_size(view_camera[0],obj_display_manager.ideal_width/view_zoom,obj_display_manager.ideal_height/view_zoom);
 
 // Clamping stops the screen scrolling when you each the end of a room
 var xValue=clamp(x-camera_get_view_width(view_camera[0])/2, 0, room_width-camera_get_view_width(view_camera[0]));

@@ -1,38 +1,38 @@
 {
-    "id": "97c459d0-8391-479d-919a-f7c46d9347ba",
+    "id": "c32c03c5-b707-4722-ade5-6be17ab7af57",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_camera",
+    "name": "obj_display_manager",
     "eventList": [
         {
-            "id": "ab7edf4b-9192-4d73-b883-6f762f5a6281",
+            "id": "05cb1f37-9c40-4f9e-9396-8b0b1a592fd9",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 3,
-            "m_owner": "97c459d0-8391-479d-919a-f7c46d9347ba"
+            "m_owner": "c32c03c5-b707-4722-ade5-6be17ab7af57"
         },
         {
-            "id": "e0378d22-bc62-4026-8170-b465748b645d",
+            "id": "db0c9745-69a9-4f40-be00-23a7e4c6bb7e",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
-            "m_owner": "97c459d0-8391-479d-919a-f7c46d9347ba"
+            "m_owner": "c32c03c5-b707-4722-ade5-6be17ab7af57"
         },
         {
-            "id": "77cb4917-c8dd-4d7b-8ba1-6e5497ddd015",
+            "id": "ed25fa21-10c1-4833-8ce7-1e1321a6ab07",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 64,
-            "eventtype": 8,
-            "m_owner": "97c459d0-8391-479d-919a-f7c46d9347ba"
+            "enumb": 0,
+            "eventtype": 2,
+            "m_owner": "c32c03c5-b707-4722-ade5-6be17ab7af57"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",

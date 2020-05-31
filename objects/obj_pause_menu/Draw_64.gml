@@ -1,11 +1,12 @@
 if(!pause) exit;
 
+var sc=scalar;
 //blur=shader_get_uniform(shd_blur,"blur");
 _alpha_mono=shader_get_uniform(shd_monochrome,"_alpha_mono");
 shader_set(shd_monochrome);
 shader_set_uniform_f(_alpha_mono,alpha2);
 //shader_set_uniform_f(blur,alpha);
-draw_surface_ext(application_surface,0,0,scalarx,scalary,0,c_white,1);
+draw_surface_ext(application_surface,0,0,sc,sc,0,c_white,1);
 shader_reset();
 
 var gwidth=game_width, gheight=game_height;
@@ -28,21 +29,21 @@ if(page==0) {
 }
 
 var yy=0; repeat(ds_height) {
-	interval=(gheight-(4*(64*scalary)))/5;
-	boxplace=(interval+(64*scalary));
+	interval=(gheight-(4*(64*sc)))/5;
+	boxplace=(interval+(64*sc));
 	y_start=interval+(boxplace*yy);
-	y_start2=((25*(yy+1))-8)*scalary;
+	y_start2=((25*(yy+1))-8)*sc;
 	
 	switch(ds_grid[# 2,yy]) {
 		case menu_element_type.slider:
 			c=c_black;
-			var len=64*scalarx;
+			var len=64*sc;
 			var current_val=ds_grid[# 4,yy];
-			draw_line_width_color((gwidth/2)-(len/2),y_start2,(gwidth/2)+(len/2),y_start2,2*scalarx,c,c);
+			draw_line_width_color((gwidth/2)-(len/2),y_start2,(gwidth/2)+(len/2),y_start2,2*sc,c,c);
 			
 			if(yy==menu_option[page]) c=c_gray;
-			draw_circle_color(((gwidth/2)-(len/2))+(current_val*len),y_start2,4*scalarx,c,c,false);
-			draw_text_transformed((gwidth/2)+(len*1.2),y_start2,string(floor(current_val*100))+"%",scalarx,scalary,0);
+			draw_circle_color(((gwidth/2)-(len/2))+(current_val*len),y_start2,4*sc,c,c,false);
+			draw_text_transformed((gwidth/2)+(len*1.2),y_start2,string(floor(current_val*100))+"%",sc,sc,0);
 			c=c_black;
 		break;
 		case menu_element_type.input:
@@ -59,7 +60,7 @@ var yy=0; repeat(ds_height) {
 				c=c_gray;
 				current_val="press key...";
 			} else c=c_black;
-			draw_text_ext_transformed_color(gwidth/2,y_start2,current_val,24*scalary,gwidth,scalarx,scalary,0,c,c,c,c,1);
+			draw_text_ext_transformed_color(gwidth/2,y_start2,current_val,24*sc,gwidth,sc,sc,0,c,c,c,c,1);
 		break;
 	}
 	if(page==menu_page.Main) {
@@ -112,10 +113,10 @@ var yy=0; repeat(ds_height) {
 			#endregion
 			draw_set_halign(fa_right);
 			draw_set_font(FONT_NORM);
-			draw_text_ext_transformed_color(xx-5*scalarx,y_start+24*scalary,ds_grid[# 0,yy],0,gwidth-85*scalarx,scalarx,scalary,0,c,c,c,c,alphatext);
+			draw_text_ext_transformed_color(xx-5*sc,y_start+24*sc,ds_grid[# 0,yy],0,gwidth-85*sc,sc,sc,0,c,c,c,c,alphatext);
 			draw_set_halign(fa_center);
 		}
-		draw_sprite_ext(ds_grid[# 1,yy],sub,xx+8*scalarx,y_start,2*scalarx,2*scalary,0,c_white,1);
+		draw_sprite_ext(ds_grid[# 1,yy],sub,xx+8*sc,y_start,2*sc,2*sc,0,c_white,1);
 	} else if(page==menu_page.Inventory) {
 		if(obj_inventory.show_inventory==false) {
 			obj_inventory.show_inventory=true; obj_inventory.selected_slot=0;
@@ -126,8 +127,8 @@ var yy=0; repeat(ds_height) {
 		if(obj_inventory.show_inventory==true) obj_inventory.show_inventory=false;
 		if(page==menu_page.Options && yy==0) {
 			c=c_black;
-			if(window_get_fullscreen()) draw_text_transformed_color((gwidth/2)+40*scalarx,y_start2,"On",scalarx,scalary,0,c,c,c,c,1);
-			else draw_text_transformed_color((gwidth/2)+40*scalarx,y_start2,"Off",scalarx,scalary,0,c,c,c,c,1);
+			if(window_get_fullscreen()) draw_text_transformed_color((gwidth/2)+40*sc,y_start2,"On",sc,sc,0,c,c,c,c,1);
+			else draw_text_transformed_color((gwidth/2)+40*sc,y_start2,"Off",sc,sc,0,c,c,c,c,1);
 		}
 		if(!inputting && yy==menu_option[page]) {
 			if(ds_grid[# 6,menu_option[page]]!=Flavor && page==menu_page.Flavors) {
@@ -136,13 +137,13 @@ var yy=0; repeat(ds_height) {
 				else change_variable(noone,"Flavor",flavorholder);
 			}
 		} else c=c_black;
-		if(yy==menu_option[page]) draw_sprite_ext(spr_textchoice,_sub,20*scalarx,25*(yy+1)*scalary,2*scalarx,2*scalary,0,c_white,1);
-		if(!inputting && yy==flavorholder && page==menu_page.Flavors) draw_sprite_ext(spr_textend,_sub,152*scalarx,(25*(yy+1)+2)*scalary,2*scalarx,2*scalary,0,c_white,1);
+		if(yy==menu_option[page]) draw_sprite_ext(spr_textchoice,_sub,20*sc,25*(yy+1)*sc,2*sc,2*sc,0,c_white,1);
+		if(!inputting && yy==flavorholder && page==menu_page.Flavors) draw_sprite_ext(spr_textend,_sub,152*sc,(25*(yy+1)+2)*sc,2*sc,2*sc,0,c_white,1);
 		draw_set_halign(fa_left);
 		draw_set_font(FONT_NORM);
 		if(yy==menu_option[page]) var textx=35;
 		else var textx=20;
-		draw_text_ext_transformed_color(textx*scalarx,y_start2,ds_grid[# 0,yy],0,gwidth,scalarx,scalary,0,c,c,c,c,alphatext);
+		draw_text_ext_transformed_color(textx*sc,y_start2,ds_grid[# 0,yy],0,gwidth,sc,sc,0,c,c,c,c,alphatext);
 		draw_set_halign(fa_center);
 		if(page!=menu_page.Flavors && flavorholder!=Flavor) Flavor=flavorholder;
 	}
@@ -153,8 +154,8 @@ if(page!=0) c=c_dkgray;
 else c=c_ltgray;
 draw_set_halign(fa_center);
 
-if(page==0) draw_text_transformed_color(gwidth/2,gheight-35*scalary,"Press ESC to resume game",scalarx,scalary,0,c,c,c,c,alphatext);
-else draw_text_transformed_color(gwidth/2,gheight-35*scalary,"Press ESC to go back",scalarx,scalary,0,c,c,c,c,alphatext);
+if(page==0) draw_text_transformed_color(gwidth/2,gheight-35*sc,"Press ESC to resume game",sc,sc,0,c,c,c,c,alphatext);
+else draw_text_transformed_color(gwidth/2,gheight-35*sc,"Press ESC to go back",sc,sc,0,c,c,c,c,alphatext);
 
 if(blackA!=0) {
 	//blackA will act as a fader

@@ -5,13 +5,13 @@ if(input_pause && obj_everett.active_textbox==noone && !pause && !obj_game.trans
 }
 
 if((input_pause || input_revert) && page!=menu_page.Main && !trigger && blackA==0 && !obj_inventory.inputting) trigger=true;
-if(xx<gwidth-80*scalarx || resize_set) xx=gwidth-80*scalarx;
+if(xx<gwidth-80*scalar || resize_set) xx=gwidth-80*scalar;
 if(x2>gwidth/5 || resize_set) x2=gwidth/5;
 if(resize_set) resize_set=false;
 
-if(pause && x2<gwidth/5 && unpause=false) x2+=6*scalarx;
-if(pause && xx>gwidth-80*scalarx && unpause=false) xx-=4*scalarx;
-else if(page==0 && pause && xx==gwidth-80*scalarx && (input_pause || input_revert) && unpause=false && !obj_game.transitionbool) unpause=true;
+if(pause && x2<gwidth/5 && unpause=false) x2+=6*scalar;
+if(pause && xx>gwidth-80*scalar && unpause=false) xx-=4*scalar;
+else if(page==0 && pause && xx==gwidth-80*scalar && (input_pause || input_revert) && unpause=false && !obj_game.transitionbool) unpause=true;
 
 if(!unpause && alpha<(alphamax/255)) alpha+=0.02;
 else if(!unpause && alpha>(alphamax/255)) alpha=(alphamax/255);
@@ -27,8 +27,8 @@ if(unpause && alpha2>0) alpha2-=0.04;
 if(unpause && alphatext>0) alphatext-=0.04;
 
 if(unpause=true) {
-	if(x2>0) x2-=6*scalarx;
-	if(xx<gwidth) xx+=4*scalarx;
+	if(x2>0) x2-=6*scalar;
+	if(xx<gwidth) xx+=4*scalar;
 	else {
 		end_pause=true;
 		pause=false;
@@ -91,7 +91,7 @@ if(page!=menu_page.Inventory && page!=menu_page.Skills) {
 			default: inputting=false; break;
 		}
 	} else if(!transition) {
-		if(xx==gwidth-80*scalarx) {
+		if(xx==gwidth-80*scalar) {
 			var ochange=input_down_perm-input_up_perm;
 			if(ochange!=0) {
 				menu_option[page]+=ochange;

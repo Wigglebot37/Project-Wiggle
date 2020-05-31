@@ -1,9 +1,10 @@
-boxstart=game_height-(boxheight*scalary);
-namestart=boxstart-40*scalary;
-textwidthlmt=game_width-16*scalarx;
+var sc=scalar;
+boxstart=game_height-(boxheight*sc);
+namestart=boxstart-40*sc;
+textwidthlmt=game_width-16*sc;
 
 if(stop_dialogue) {
-	if(yy<game_height) yy+=6*scalary;
+	if(yy<game_height) yy+=6*sc;
 	else {
 		// Destroying this textbox instance and allow player movement
 		obj_everett.active_textbox=noone;
@@ -13,12 +14,12 @@ if(stop_dialogue) {
 	}
 }
 
-if(!stop_dialogue && yy2<40*scalary) yy2+=4*scalary;
-else if(stop_dialogue && yy2>0) yy2-=4*scalary;
+if(!stop_dialogue && yy2<40*sc) yy2+=4*sc;
+else if(stop_dialogue && yy2>0) yy2-=4*sc;
 
 if(!stop_dialogue) {
-	if(yy==boxstart && yp>boxstart+(20*scalary)) yp-=3*scalary;
-	if(yy>boxstart) yy-=6*scalary;
+	if(yy==boxstart && yp>boxstart+(20*sc)) yp-=3*sc;
+	if(yy>boxstart) yy-=6*sc;
 	else if(yy<boxstart) yy=boxstart;
 }
 

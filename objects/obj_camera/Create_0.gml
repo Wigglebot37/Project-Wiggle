@@ -5,12 +5,6 @@ snapx=false;
 snapy=false;
 
 factor=20;
-globalvar scalarx;
-globalvar scalary;
-scalarx=1;
-scalary=1;
 
-guiwidth=576;
-guiheight=320;
-
-display_set_gui_size(window_get_width(), window_get_height());
+view_zoom=2;
+view_max_zoom=4;

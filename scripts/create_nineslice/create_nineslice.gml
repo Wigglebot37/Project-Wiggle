@@ -22,18 +22,19 @@ if (sprite_get_width(sprite)%3 != 0 || sprite_get_height(sprite)%3 != 0) {
 
 var width = abs(x2-x1);
 var height = abs(y2-y1);
+var sc=scalar;
 
 // Top
-draw_sprite_part_ext(sprite, subimg, 0, 0, slice_width, slice_height, x1, y1, 1*scalarx, 1*scalary, c_white, 1); // Left
-draw_sprite_part_ext(sprite, subimg, slice_width, 0, slice_width, slice_height, x1+(slice_width*scalarx), y1, (width-slice_width*2*scalarx)/slice_width, 1*scalary, c_white, 1); // Middle
-draw_sprite_part_ext(sprite, subimg, slice_width*2, 0, slice_width, slice_height, x2-slice_width*scalarx, y1, 1*scalarx, 1*scalary, c_white, 1); // Right
+draw_sprite_part_ext(sprite, subimg, 0, 0, slice_width, slice_height, x1, y1, 1*sc, 1*sc, c_white, 1); // Left
+draw_sprite_part_ext(sprite, subimg, slice_width, 0, slice_width, slice_height, x1+(slice_width*sc), y1, (width-slice_width*2*sc)/slice_width, 1*sc, c_white, 1); // Middle
+draw_sprite_part_ext(sprite, subimg, slice_width*2, 0, slice_width, slice_height, x2-slice_width*sc, y1, 1*sc, 1*sc, c_white, 1); // Right
 
 // Middle
-draw_sprite_part_ext(sprite, subimg, 0, slice_height, slice_width, slice_height, x1, y1+slice_height*scalary, 1*scalarx, (height-slice_height*2*scalary)/slice_height, c_white, 1); // Left
-draw_sprite_part_ext(sprite, subimg, slice_width, slice_height, slice_width, slice_height, x1+slice_width*scalarx, y1+slice_height*scalary, (width-slice_width*2*scalarx)/slice_width, (height-slice_height*2*scalary)/slice_height, c_white, 1); // Middle
-draw_sprite_part_ext(sprite, subimg, slice_width*2, slice_height, slice_width, slice_height, x2-slice_width*scalarx, y1+slice_height*scalary, 1*scalarx, (height-slice_height*2*scalary)/slice_height, c_white, 1); // Right
+draw_sprite_part_ext(sprite, subimg, 0, slice_height, slice_width, slice_height, x1, y1+slice_height*sc, 1*sc, (height-slice_height*2*sc)/slice_height, c_white, 1); // Left
+draw_sprite_part_ext(sprite, subimg, slice_width, slice_height, slice_width, slice_height, x1+slice_width*sc, y1+slice_height*sc, (width-slice_width*2*sc)/slice_width, (height-slice_height*2*sc)/slice_height, c_white, 1); // Middle
+draw_sprite_part_ext(sprite, subimg, slice_width*2, slice_height, slice_width, slice_height, x2-slice_width*sc, y1+slice_height*sc, 1*sc, (height-slice_height*2*sc)/slice_height, c_white, 1); // Right
 
 // Bottom
-draw_sprite_part_ext(sprite, subimg, 0, slice_height*2, slice_width, slice_height*2, x1, y2-slice_height*scalary, 1*scalarx, 1*scalary, c_white, 1); // Left
-draw_sprite_part_ext(sprite, subimg, slice_width, slice_height*2, slice_width, slice_height, x1+slice_width*scalarx, y2-slice_height*scalary, (width-slice_width*2*scalarx)/slice_width, 1*scalary, c_white, 1); // Middle
-draw_sprite_part_ext(sprite, subimg, slice_width*2, slice_height*2, slice_width, slice_height, x2-slice_width*scalarx, y2-slice_height*scalary, 1*scalarx, 1*scalary, c_white, 1); // Right
+draw_sprite_part_ext(sprite, subimg, 0, slice_height*2, slice_width, slice_height*2, x1, y2-slice_height*sc, 1*sc, 1*sc, c_white, 1); // Left
+draw_sprite_part_ext(sprite, subimg, slice_width, slice_height*2, slice_width, slice_height, x1+slice_width*sc, y2-slice_height*sc, (width-slice_width*2*sc)/slice_width, 1*sc, c_white, 1); // Middle
+draw_sprite_part_ext(sprite, subimg, slice_width*2, slice_height*2, slice_width, slice_height, x2-slice_width*sc, y2-slice_height*sc, 1*sc, 1*sc, c_white, 1); // Right

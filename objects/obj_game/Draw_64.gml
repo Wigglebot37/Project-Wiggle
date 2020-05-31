@@ -22,7 +22,7 @@ if(transitionbool) {
 			if(ev.flash<=0.1 && flashct<2) {
 				ev.flash=1; flashct++;
 			}
-			if(trany1<game_height) trany1+=4*scalary;
+			if(trany1<game_height) trany1+=4*scalar;
 			else {
 				flashct=0; room_goto(spawnRoom);
 			}
@@ -46,7 +46,7 @@ if(transitionbool) {
 				transitionbool=false;
 			}
 		} else {
-			if(trany2<game_height) trany2+=4*scalary;
+			if(trany2<game_height) trany2+=4*scalar;
 			else {
 				trany1=-4; trany2=-4;
 				end_tran=true;

@@ -1895,6 +1895,14 @@
             }
         },
         {
+            "Key": "c32c03c5-b707-4722-ade5-6be17ab7af57",
+            "Value": {
+                "id": "ef932b54-b394-4788-8171-5ea1f140c6a8",
+                "resourcePath": "objects\\obj_display_manager\\obj_display_manager.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "c355db74-01fc-4bf1-b9e8-4bebec575d6a",
             "Value": {
                 "id": "7a563393-472e-4820-ab01-66c3de1238bb",
@@ -2076,6 +2084,14 @@
                 "id": "13e0c3b2-bed9-492d-adf8-bc36d3739880",
                 "resourcePath": "views\\d672532f-50ff-4543-bd9d-8c77181c7f1a.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "d86fed8a-84bd-480b-9fd1-375062fc5f36",
+            "Value": {
+                "id": "0a912227-1793-44b4-8eec-1f19b7ebbd1f",
+                "resourcePath": "shaders\\shd_lighting\\shd_lighting.yy",
+                "resourceType": "GMShader"
             }
         },
         {

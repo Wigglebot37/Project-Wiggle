@@ -1,11 +1,11 @@
 //Allows for gradual camera movement if needed
 if(!snapx && (xTo-x)<=1 && (xTo-x)>=-1) {
 	x=xTo; snapx=true;
-} else if(snapx && (xTo-x)>1 && (xTo-x)<-1) snapx=false;
+} else if(snapx && (xTo-x)>1.5 && (xTo-x)<-1.5) snapx=false;
 
 if(!snapy && (yTo-y)<=1 && (yTo-y)>=-1) {
 	y=yTo; snapy=true;
-} else if(snapy && (yTo-y)>1 && (yTo-y)<-1) snapy=false;
+} else if(snapy && (yTo-y)>1.5 && (yTo-y)<-1.5) snapy=false;
 
 if(!pause) {
 	x+=(xTo-x)/factor;

@@ -4,7 +4,7 @@
 /// @param x
 /// @param y
 /// @param x1
-/// @param y2
+/// @param y1
 /// @param x2
 /// @param y2
 //

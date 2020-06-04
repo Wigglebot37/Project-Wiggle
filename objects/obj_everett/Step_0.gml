@@ -8,7 +8,7 @@ if(keyboard_check_pressed(vk_space)) flash=1;
 if(obj_pause_menu.end_pause || obj_game.end_tran) { image_speed=img_spd; obj_pause_menu.end_pause=false; obj_game.end_tran=false;
 	if(!running && ready2==1) {running=true; ready=false; ready2=0;} else {ready=false; ready2=0;} }
 
-if(!pause && !obj_game.transitionbool && active_textbox==noone) {
+if(!pause && !obj_game.transitionbool && active_textbox==noone && !obj_ctrl_battle.start_battle) {
 	if(keyboard_check_pressed(vk_lshift) && z==0) zswitch=true;
 	
 	if(zswitch) {
@@ -47,7 +47,7 @@ if(!instance_exists(obj_cutscene)) {
 	}
 }
 
-if(!instance_exists(obj_cutscene) && !obj_game.transitionbool && active_textbox==noone && !pause && !ready) {
+if(!instance_exists(obj_cutscene) && !obj_game.transitionbool && active_textbox==noone && !pause && !ready && !obj_ctrl_battle.start_battle) {
 	if(!running && hinput==0 && vinput==0) prepress=false;
 	else prepress=true;
 	
@@ -252,7 +252,7 @@ if(!running) {
 		if(active_textbox!=noone) {
 			image_index=1;
 			idleadd=0;
-		} else if(!pause && !obj_game.transitionbool) {
+		} else if(!pause && !obj_game.transitionbool && !obj_ctrl_battle.start_battle) {
 			if(idleadd<1) {
 				idleadd+=(1/(60*6)); image_index=1;
 			} else {
@@ -287,14 +287,14 @@ if(invincible) {
 var inst=instance_place(x,y,obj_par_enemy);
 if(inst!=noone && !invincible) {
 	running=false;
-	with(obj_game) {
-		if(!transitionbool) {
-			obj_game.stored_inst=inst;
-			stored_dir=ev.dir;
-			spawnX=ev.x; spawnY=ev.y;
-			spawnRoom=inst.targetRoom;
+	with(obj_ctrl_battle) {
+		if(!start_battle) {
+			instance=inst;
+			stored_direction=obj_everett.dir;
+			spX=obj_everett.x; spY=spawnY=obj_everett.y;
+			spRoom=inst.targetRoom;
 			enemy=inst.object_index;
-			transitionbool=true;
+			start_battle=true;
 		}
 	}
 }
@@ -306,5 +306,5 @@ direction=dir;
 speed=spd;
 if((hinput!=0 || vinput!=0) && !prepress) image_index=2;
 if(obj_pause_menu.start_pause) { img_spd=image_speed; obj_pause_menu.start_pause=false; }
-if(pause || obj_game.transitionbool) { image_speed=0; speed=0; }
+if(pause || obj_game.transitionbool || obj_ctrl_battle.start_battle) { image_speed=0; speed=0; image_index=1; }
 if((!running && hinput==0 && vinput==0 && !instance_exists(obj_cutscene)) || ready || ready2) speed=0;

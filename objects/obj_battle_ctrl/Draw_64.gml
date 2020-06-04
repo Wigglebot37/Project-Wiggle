@@ -1,15 +1,10 @@
 var c=c_black;
 var sc=scalar,gwid=game_width,gheight=game_height;
-draw_sprite_ext(spr_lucas,0,gwid/2,gheight-80*sc,2*sc,2*sc,0,c_white,1);
-create_nineslice(spr_boxlgback,Flavor,gwid/2-gwid/8,gheight-80*sc,gwid/2+gwid/8,gheight);
 draw_set_halign(fa_center);
-draw_text_transformed(gwid/2,gheight-74*sc,"Lucas",sc,sc,0);
 
 draw_set_halign(fa_left);
 draw_set_color(c_black);
 draw_sprite_ext(spr_battle_menu,choice,0,0,2*sc,2*sc,0,c_white,1);
-draw_text_transformed(114*sc,4*sc,"Lucas",sc,sc,0);
-draw_sprite_stretched(spr_lucaspfp,0,0,4*sc,53*2*sc,53*2*sc+4*sc);
 draw_sprite_ext(spr_battle_menu_box,0,0,0,2*sc,2*sc,0,c_white,1);
 
 var t=0,textx=0,texty=0; repeat(5) {

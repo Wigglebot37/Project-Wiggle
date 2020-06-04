@@ -1,0 +1,2 @@
+room_set_width(rm_battlescreen,view_width);
+room_set_height(rm_battlescreen,view_height);

@@ -28,6 +28,7 @@ blackA=0;
 end_tran=false;
 img_spd=0;
 flashct=0;
+start_battle=false;
 
 enemy=noone;
 

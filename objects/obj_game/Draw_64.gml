@@ -46,7 +46,7 @@ if(transitionbool) {
 				transitionbool=false;
 			}
 		} else {
-			if(trany2<game_height) trany2+=4*scalar;
+			if(trany2<game_height) trany2+=4*4;
 			else {
 				trany1=-4; trany2=-4;
 				end_tran=true;
